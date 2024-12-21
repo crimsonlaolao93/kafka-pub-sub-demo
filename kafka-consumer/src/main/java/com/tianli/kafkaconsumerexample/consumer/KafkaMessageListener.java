@@ -1,5 +1,6 @@
 package com.tianli.kafkaconsumerexample.consumer;
 
+import com.tianli.kafkacommon.model.PaymentInfo;
 import com.tianli.kafkaconsumerexample.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,8 +13,8 @@ public class KafkaMessageListener {
     Logger logger = LoggerFactory.getLogger(KafkaMessageListener.class);
 
     @KafkaListener(topics = Constants.KAFKA_TOPIC, groupId = Constants.KAFKA_GROUP_ID)
-    public void consumer1(String message){
-        logger.info("consumer is consuming the message {}", message);
+    public void consume(PaymentInfo paymentInfo){
+        logger.info("consumer is consuming the message {}", paymentInfo);
     }
 
 }

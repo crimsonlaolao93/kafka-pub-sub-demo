@@ -1,6 +1,6 @@
 package com.tianli.kafkaproducerexample.controller;
 
-import com.tianli.kafkaproducerexample.dto.Customer;
+import com.tianli.kafkacommon.model.PaymentInfo;
 import com.tianli.kafkaproducerexample.service.KafkaMessagePublisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,8 +26,8 @@ public class EventController {
     }
 
     @PostMapping("/publish")
-    public void sendEvents(@RequestBody Customer customer){
-        publisher.sendEventsToTopic(customer);
+    public void sendEvents(@RequestBody PaymentInfo paymentInfo){
+        publisher.sendEventsToTopic(paymentInfo);
     }
 
 }

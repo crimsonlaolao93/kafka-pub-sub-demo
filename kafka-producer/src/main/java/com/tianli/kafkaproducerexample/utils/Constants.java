@@ -1,4 +1,4 @@
-package com.tianli.kafkaproducerexample;
+package com.tianli.kafkaproducerexample.utils;
 
 public class Constants {
 

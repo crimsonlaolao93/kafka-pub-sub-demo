@@ -1,7 +1,7 @@
 package com.tianli.kafkaproducerexample.service;
 
-import com.tianli.kafkaproducerexample.Constants;
-import com.tianli.kafkaproducerexample.dto.Customer;
+import com.tianli.kafkacommon.model.PaymentInfo;
+import com.tianli.kafkaproducerexample.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
@@ -26,14 +26,14 @@ public class KafkaMessagePublisher {
         });
     }
 
-    public void sendEventsToTopic(Customer customer){
+    public void sendEventsToTopic(PaymentInfo paymentInfo){
         try{
-            CompletableFuture<SendResult<String, Object>> future = template.send(Constants.KAFKA_TOPIC_NAME, customer);
+            CompletableFuture<SendResult<String, Object>> future = template.send(Constants.KAFKA_TOPIC_NAME, paymentInfo);
             future.whenComplete((result,ex)->{
                 if(ex==null){
-                    System.out.println("Send message = [ " + customer.toString() + "] with offset=[" + result.getRecordMetadata().offset()+"]");
+                    System.out.println("Send message = [ " + paymentInfo.toString() + "] with offset=[" + result.getRecordMetadata().offset()+"]");
                 }else{
-                    System.out.println("Unable to send message=[" + customer.toString() + "] due to: " + ex.getMessage());
+                    System.out.println("Unable to send message=[" + paymentInfo.toString() + "] due to: " + ex.getMessage());
                 }
             });
         }catch (Exception ex){

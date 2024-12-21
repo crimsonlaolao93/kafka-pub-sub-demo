@@ -1,2 +1,4 @@
-package com.tianli.kafkacommon.model;public class Customer {
+package com.tianli.kafkacommon.model;
+
+public class Customer {
 }
